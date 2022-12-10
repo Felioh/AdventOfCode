@@ -2,14 +2,11 @@ import numpy as np
 import pandas as pd
 import parse
 
-res = ""
-
-def evaluate(c, v):
-    global res
-    res += "#" if abs((c % 40) - v) < 2 else "."
+def evaluate(c, v, res=[]): #using the mutability of lists
+    res.append((".", "#")[abs((c % 40) - v) < 2])
 
     if len(res) % 40 == 0:
-        print(res[-40:])
+        print(' '.join(res[-40:]))
     return c + 1
 
 def main():
